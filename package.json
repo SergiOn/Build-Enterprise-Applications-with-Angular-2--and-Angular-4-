@@ -1,0 +1,21 @@
+{
+  "name": "build-enterprise-applications-with-angular-2-and-angular-4",
+  "version": "1.0.0",
+  "description": "angular screencast",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergiOn/Build-Enterprise-Applications-with-Angular-2-and-Angular-4.git"
+  },
+  "author": "SergiOn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergiOn/Build-Enterprise-Applications-with-Angular-2-and-Angular-4/issues"
+  },
+  "homepage": "https://github.com/SergiOn/Build-Enterprise-Applications-with-Angular-2-and-Angular-4#readme"
+}
