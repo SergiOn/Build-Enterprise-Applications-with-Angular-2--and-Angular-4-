@@ -8,10 +8,15 @@ import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database
 })
 export class AppComponent {
   title = 'app';
+  cuisines = ['c1', 'c2', 'c3'];
+  items: FirebaseListObservable<any[]>;
 
-  // items: FirebaseListObservable<any[]>;
+  constructor(af: AngularFireDatabase) {
+    af.list('/cuisines').subscribe((x) => {
+      this.cuisines = x;
+      console.log(this.cuisines);
+    });
 
-  constructor(fb: AngularFireDatabase) {
-    console.log(fb);
+    // this.items = af.list('/cuisines');
   }
 }
