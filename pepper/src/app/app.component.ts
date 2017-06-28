@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   update() {
-    this.af.object('/restaurant').update({
+    this.af.object('/restaurant').set({
       name: 'New Name',
       rating: 5
     });
