@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import { Observable } from 'rxjs/observable';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,8 @@ import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} f
 })
 export class AppComponent implements OnInit {
   cuisines: FirebaseListObservable<any[]>;
-  restaurants: FirebaseObjectObservable<any[]>;
+  // restaurants: FirebaseListObservable<any[]>;
+  restaurants: Observable<any[]>;
 
   constructor(
     private af: AngularFireDatabase
@@ -16,6 +19,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.cuisines = this.af.list('/cuisines');
-    this.restaurants = this.af.object('/restaurants');
+    this.restaurants = this.af.list('/restaurants')
+      .map((restaurants) => {
+        console.log(restaurants);
+        return restaurants;
+      });
   }
 }
