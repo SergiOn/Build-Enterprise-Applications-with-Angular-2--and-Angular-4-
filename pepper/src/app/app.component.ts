@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.cuisines = this.af.list('/cuisines');
-    this.restaurant = this.af.object('/restaurant/address');
+    this.restaurant = this.af.object('/restaurant');
   }
 }
