@@ -26,4 +26,11 @@ export class AppComponent implements OnInit {
     // });
     this.cuisines.push('Asian');
   }
+
+  update() {
+    this.af.object('/restaurant').update({
+      name: 'New Name',
+      rating: 5
+    });
+  }
 }
