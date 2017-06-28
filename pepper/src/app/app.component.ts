@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,7 @@ import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database
 export class AppComponent implements OnInit {
   title = 'app';
   cuisines: FirebaseListObservable<any[]>;
+  restaurant: FirebaseObjectObservable<any[]>;
 
   constructor(
     private af: AngularFireDatabase
@@ -16,5 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.cuisines = this.af.list('/cuisines');
+    this.restaurant = this.af.object('/restaurant/address');
   }
 }
