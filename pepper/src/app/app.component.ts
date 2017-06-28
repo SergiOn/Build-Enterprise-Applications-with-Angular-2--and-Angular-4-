@@ -6,24 +6,15 @@ import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   title = 'app';
-  cuisines = ['c1', 'c2', 'c3'];
-  items: FirebaseListObservable<any[]>;
-  private subscriptions;
+  cuisines: FirebaseListObservable<any[]>;
 
   constructor(
     private af: AngularFireDatabase
   ) { }
 
   ngOnInit() {
-    this.subscriptions = this.af.list('/cuisines').subscribe((x) => {
-      this.cuisines = x;
-      console.log(this.cuisines);
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
+    this.cuisines = this.af.list('/cuisines');
   }
 }
