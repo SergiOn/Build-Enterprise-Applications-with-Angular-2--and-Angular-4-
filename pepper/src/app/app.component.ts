@@ -9,7 +9,7 @@ import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} f
 export class AppComponent implements OnInit {
   title = 'app';
   cuisines: FirebaseListObservable<any[]>;
-  restaurant: FirebaseObjectObservable<any[]>;
+  // restaurant: FirebaseObjectObservable<any[]>;
 
   constructor(
     private af: AngularFireDatabase
@@ -17,6 +17,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.cuisines = this.af.list('/cuisines');
-    this.restaurant = this.af.object('/restaurant');
+    // this.restaurant = this.af.object('/restaurant');
+  }
+
+  add() {
+    // this.cuisines.push({
+    //   4: 'Asian'
+    // });
+    this.cuisines.push('Asian');
   }
 }

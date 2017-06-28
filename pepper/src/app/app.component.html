@@ -18,9 +18,10 @@
   <!--</li>-->
 <!--</ul>-->
 
+<button (click)="add()">Add</button>
 
 <ul>
   <li *ngFor="let c of cuisines | async">{{ c.$value }}</li>
 </ul>
 
-{{ (restaurant | async)?.name }}
+<!--{{ (restaurant | async)?.name }}-->
