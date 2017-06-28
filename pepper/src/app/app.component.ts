@@ -22,6 +22,11 @@ export class AppComponent implements OnInit {
     this.restaurants = this.af.list('/restaurants')
       .map((restaurants) => {
         console.log(restaurants);
+
+        restaurants.map((restaurant) => {
+          restaurant.cuisineType = this.af.object(`/cuisines/${restaurant.cuisine}`);
+        });
+
         return restaurants;
       });
   }
