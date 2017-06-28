@@ -28,6 +28,14 @@ export class AppComponent implements OnInit {
   }
 
   update() {
+    // this.af.object('/restaurant').update({
+    //   name: 'New Name',
+    //   rating: 5
+    // });
     this.af.object('/favorites/1/10').set(null);
+  }
+
+  remove() {
+    this.af.object('/restaurant').remove();
   }
 }
