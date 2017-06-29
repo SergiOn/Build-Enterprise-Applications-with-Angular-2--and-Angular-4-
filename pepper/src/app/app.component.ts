@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   cuisines: FirebaseListObservable<any[]>;
   // restaurants: FirebaseListObservable<any[]>;
   restaurants: Observable<any[]>;
+  exists;
 
   constructor(
     private af: AngularFireDatabase
@@ -23,13 +24,25 @@ export class AppComponent implements OnInit {
       .map((restaurants) => {
         restaurants.map((restaurant) => {
           restaurant.cuisineType = this.af.object(`/cuisines/${restaurant.cuisine}`);
+
           restaurant.featureTypes = [];
           for (const f of Object.keys(restaurant.features)) {
             restaurant.featureTypes.push(this.af.object(`/features/${f}`));
           }
-          console.log(restaurant.featureTypes);
         });
         return restaurants;
       });
+
+    this.exists = this.af.object('/restaurants/0/features/0');
+
+    this.exists.subscribe((x) => {
+      console.log(x);
+
+      if (x && x.$value) {
+        console.log('EXISTS');
+      } else {
+        console.log('NOT EXISTS');
+      }
+    });
   }
 }
