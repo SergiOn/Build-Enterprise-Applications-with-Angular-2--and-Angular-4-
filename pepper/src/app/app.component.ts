@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit {
 
     this.exists = this.af.object('/restaurants/0/features/0');
 
-    this.exists.subscribe((x) => {
+    this.exists.take(1).subscribe((x) => {
       console.log(x);
 
       if (x && x.$value) {
