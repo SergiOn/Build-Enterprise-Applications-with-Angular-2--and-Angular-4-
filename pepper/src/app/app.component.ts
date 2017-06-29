@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 
@@ -21,12 +21,14 @@ export class AppComponent implements OnInit {
     this.cuisines = this.af.list('/cuisines');
     this.restaurants = this.af.list('/restaurants')
       .map((restaurants) => {
-        console.log(restaurants);
-
         restaurants.map((restaurant) => {
           restaurant.cuisineType = this.af.object(`/cuisines/${restaurant.cuisine}`);
+          restaurant.featureTypes = [];
+          for (const f of Object.keys(restaurant.features)) {
+            restaurant.featureTypes.push(this.af.object(`/features/${f}`));
+          }
+          console.log(restaurant.featureTypes);
         });
-
         return restaurants;
       });
   }
