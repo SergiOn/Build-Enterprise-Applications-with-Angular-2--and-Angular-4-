@@ -32,7 +32,9 @@ export class AppComponent implements OnInit {
         orderByChild: 'rating',
         // startAt: 3,
         // endAt: 4
-        equalTo: 5
+        equalTo: 5,
+        // limitToFirst: 50
+        limitToLast: 2
       }
     });
 
