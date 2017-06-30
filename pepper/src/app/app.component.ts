@@ -28,7 +28,10 @@ export class AppComponent implements OnInit {
 
     this.restaurants = this.af.list('/restaurants', {
       query: {
-        orderByChild: 'address/city'
+        orderByChild: 'rating',
+        // startAt: 3,
+        // endAt: 4
+        equalTo: 5
       }
     });
 
