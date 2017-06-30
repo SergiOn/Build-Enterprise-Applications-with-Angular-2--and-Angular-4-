@@ -22,11 +22,14 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.af.list('/restaurants').push({name: ''})
       .then((x) => {
+        console.log(x);
+        console.log(x.key);
         const restaurant = { name: 'My new restaurant' };
 
         const update = {
           [`restaurants/${x.key}`]: restaurant,
           [`restaurants-by-city/camberwell/${x.key}`]: restaurant
+          // [`restaurants-by-city/camberwell/${x.key}`]: null  // remove
         };
 
         this.af.object('/').update(update);
