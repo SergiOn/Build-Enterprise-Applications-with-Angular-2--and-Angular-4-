@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.cuisines = this.af.list('/cuisines', {
       query: {
-        orderByValue: true
+        orderByValue: true,
+        equalTo: 'Italian'
       }
     });
 
