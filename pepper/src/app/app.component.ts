@@ -20,6 +20,20 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.af.list('/restaurants').push({name: ''})
+      .then((x) => {
+        const restaurant = { name: 'My new restaurant' };
+
+        const update = {
+          [`restaurants/${x.key}`]: restaurant,
+          [`restaurants-by-city/camberwell/${x.key}`]: restaurant
+        };
+
+        this.af.object('/').update(update);
+      });
+
+
+    /*
     this.cuisines = this.af.list('/cuisines', {
       query: {
         orderByValue: true,
@@ -37,6 +51,7 @@ export class AppComponent implements OnInit {
         limitToLast: 2
       }
     });
+    */
 
     // this.restaurants = this.af.list('/restaurants')
     //   .map((restaurants) => {
