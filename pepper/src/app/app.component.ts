@@ -26,7 +26,11 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.restaurants = this.af.list('/restaurants');
+    this.restaurants = this.af.list('/restaurants', {
+      query: {
+        orderByChild: 'address/city'
+      }
+    });
 
     // this.restaurants = this.af.list('/restaurants')
     //   .map((restaurants) => {
