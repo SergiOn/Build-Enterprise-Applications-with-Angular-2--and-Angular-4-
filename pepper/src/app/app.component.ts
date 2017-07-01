@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   photoURL;
 
   constructor(
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public af: AngularFireDatabase
   ) {
     // this.user = afAuth.authState;
 
@@ -38,6 +40,9 @@ export class AppComponent implements OnInit {
     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(authState => {
         console.log('authState', authState);
+        this.af.object(`/users/${authState.user.uid}`).update({
+          accessToken: authState.credential.accessToken
+        });
       })
       .catch(error => {
         console.log('error', error);
