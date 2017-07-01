@@ -10,12 +10,23 @@ import * as firebase from 'firebase/app';
   providers: [AngularFireAuth]
 })
 export class AppComponent implements OnInit {
-  user: Observable<firebase.User>;
+  // user: Observable<firebase.User>;
+  displayName;
+  photoURL;
 
   constructor(
     public afAuth: AngularFireAuth
   ) {
-    this.user = afAuth.authState;
+    // this.user = afAuth.authState;
+
+    afAuth.authState.subscribe(authState => {
+      if (!authState) {
+        console.log('NOT LOGGED IN');
+      } else {
+        this.displayName = authState.displayName;
+        this.photoURL = authState.photoURL;
+      }
+    });
   }
 
   ngOnInit() { }

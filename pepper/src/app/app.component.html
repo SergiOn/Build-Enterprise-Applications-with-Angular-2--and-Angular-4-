@@ -3,5 +3,8 @@
 <button (click)="login()">Login</button>
 <button (click)="logout()">Logout</button>
 
-<div> {{ (user | async)?.uid }} </div>
+<!--<div> {{ (user | async)?.uid }} </div>-->
+
+<div> {{ displayName | json }} </div>
+<div> {{ photoURL | json }} </div>
 
