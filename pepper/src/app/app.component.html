@@ -1,19 +1,7 @@
-<h1>Cuisines</h1>
-<ul>
-  <li *ngFor="let c of cuisines | async">{{ c.$key }} - {{ c.$value }}</li>
-</ul>
+<h1>Hello</h1>
 
-<h1>Restaurant</h1>
-<ul>
-  <li *ngFor="let r of restaurants | async">
-    {{ r.name }} - {{ (r.cuisineType | async)?.$value }}
+<button (click)="login()">Login</button>
+<button (click)="logout()">Logout</button>
 
-    <ul>
-      <li *ngFor="let f of r.featureTypes">
-        {{ (f | async)?.$value }}
-      </li>
-    </ul>
-  </li>
-</ul>
+<div> {{ (user | async)?.uid }} </div>
 
-<div *ngIf="(exists | async)?.$value">EXISTS</div>
