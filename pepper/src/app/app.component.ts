@@ -21,11 +21,13 @@ export class AppComponent implements OnInit {
 
     afAuth.authState.subscribe(authState => {
       if (!authState) {
-        console.log('NOT LOGGED IN');
-      } else {
-        this.displayName = authState.displayName;
-        this.photoURL = authState.photoURL;
+        this.displayName = null;
+        this.photoURL = null;
+        return;
       }
+
+      this.displayName = authState.displayName;
+      this.photoURL = authState.photoURL;
     });
   }
 
