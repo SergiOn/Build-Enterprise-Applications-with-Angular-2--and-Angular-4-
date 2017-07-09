@@ -19,7 +19,9 @@ export class AppComponent implements OnInit {
     public af: AngularFireDatabase
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.afAuth.authState.subscribe(authState => console.log(authState));
+  }
 
 
   register() {
@@ -27,17 +29,29 @@ export class AppComponent implements OnInit {
       'programmingwithmosh@gmail.com',
       '!@#$12345'
     )
-    .then(authState => console.log('REGISTER-THEN', authState))
+    .then(authState => {
+      console.log('REGISTER-THEN', authState);
+      // this.afAuth.auth.currentUser.sendEmailVerification()
+      //   .then(success => console.log('VERIFICATION_SUCCESS', success))
+      //   .catch(error => console.log('VERIFICATION-ERROR', error));
+    })
     .catch(error => console.log('REGISTER-ERROR', error));
   }
 
 
   login() {
-
+    this.afAuth.auth.signInWithEmailAndPassword(
+      'programmingwithmosh@gmail.com',
+      '!@#$12345'
+    )
+    .then(authState => console.log('LOGIN-THEN', authState))
+    .catch(error => console.log('LOGIN-ERROR', error));
   }
 
   logout() {
-
+    this.afAuth.auth.signOut()
+      .then(authState => console.log('LOGOUT-THEN', authState))
+      .catch(error => console.log('LOGOUT-ERROR', error));
   }
 
 }
