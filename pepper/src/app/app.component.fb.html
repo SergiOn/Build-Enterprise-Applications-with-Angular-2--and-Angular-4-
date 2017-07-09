@@ -1,0 +1,14 @@
+<h1>Hello {{ displayName }}</h1>
+<img *ngIf="photoURL" src="{{ photoURL }}" alt="">
+
+<div>
+  <button (click)="login()">Login</button>
+  <button (click)="logout()">Logout</button>
+</div>
+
+
+<!--<div> {{ (user | async)?.uid }} </div>-->
+
+<!--<div> {{ displayName | json }} </div>-->
+<!--<div> {{ photoURL | json }} </div>-->
+

@@ -1,14 +1,5 @@
-<h1>Hello {{ displayName }}</h1>
-<img *ngIf="photoURL" src="{{ photoURL }}" alt="">
+<h1>Hello</h1>
 
-<div>
-  <button (click)="login()">Login</button>
-  <button (click)="logout()">Logout</button>
-</div>
-
-
-<!--<div> {{ (user | async)?.uid }} </div>-->
-
-<!--<div> {{ displayName | json }} </div>-->
-<!--<div> {{ photoURL | json }} </div>-->
-
+<button (click)="register()">Register</button>
+<button (click)="login()">Login</button>
+<button (click)="logout()">Logout</button>
