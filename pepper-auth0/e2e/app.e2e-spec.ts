@@ -1,14 +1,14 @@
-import { PepperAuth0Page } from './app.po';
+import { CentralizedLoginPage } from './app.po';
 
-describe('pepper-auth0 App', () => {
-  let page: PepperAuth0Page;
+describe('centralized-login App', () => {
+  let page: CentralizedLoginPage;
 
   beforeEach(() => {
-    page = new PepperAuth0Page();
+    page = new CentralizedLoginPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });
