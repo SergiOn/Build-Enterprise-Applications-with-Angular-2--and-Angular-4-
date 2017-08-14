@@ -10,7 +10,8 @@
         "lint": "ionic-app-scripts lint",
         "ionic:build": "ionic-app-scripts build",
         "ionic:serve": "ionic-app-scripts serve",
-        "ionic:run:android": "ionic run android"
+        "ionic:run:android": "ionic run android",
+        "ionic:run:android:live": "ionic run android -l"
     },
     "dependencies": {
         "@angular/common": "4.1.3",
