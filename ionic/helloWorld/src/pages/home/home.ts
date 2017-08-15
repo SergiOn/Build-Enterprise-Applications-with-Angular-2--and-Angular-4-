@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 
 import { ItemDetailsComponent } from '../item-details/item-details';
 
@@ -11,7 +11,8 @@ import { ItemDetailsComponent } from '../item-details/item-details';
 export class HomePageComponent {
   items: Array<string> = ['Item 1', 'Item 2', 'Item 3'];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController) {
 
   }
 
@@ -21,6 +22,7 @@ export class HomePageComponent {
 
   selectItem(item) {
     console.log(item);
-    this.navCtrl.push(ItemDetailsComponent, { item });
+    // this.navCtrl.push(ItemDetailsComponent, { item });
+    this.modalCtrl.create(ItemDetailsComponent, { item }).present();
   }
 }

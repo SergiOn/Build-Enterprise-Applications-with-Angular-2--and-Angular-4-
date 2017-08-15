@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'app-page-item-datails',
@@ -9,8 +9,16 @@ import { NavParams } from 'ionic-angular';
 export class ItemDetailsComponent {
   item: string;
 
-  constructor(private navParams: NavParams) {
+  constructor(private navParams: NavParams,
+              private viewCtrl: ViewController) {
     this.item = this.navParams.get('item');
   }
 
+  cancel() {
+    this.viewCtrl.dismiss();
+  }
+
+  done() {
+    this.viewCtrl.dismiss();
+  }
 }
