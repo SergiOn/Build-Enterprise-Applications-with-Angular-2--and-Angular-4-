@@ -9,7 +9,11 @@ import { ItemDetailsComponent } from '../item-details/item-details';
   styleUrls: ['/home.scss']
 })
 export class HomePageComponent {
-  items: Array<string> = ['Item 1', 'Item 2', 'Item 3'];
+  items: Array<object> = [
+    { description: 'Item 1' },
+    { description: 'Item 2' },
+    { description: 'Item 3' }
+  ];
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController) {
