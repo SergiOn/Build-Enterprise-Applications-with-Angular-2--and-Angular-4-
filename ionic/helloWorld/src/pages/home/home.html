@@ -12,4 +12,20 @@
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
   </p>
   <button ion-button (click)="click()">Click me</button>
+
+  <ion-list>
+    <ion-item>Item 1</ion-item>
+    <ion-item>Item 2</ion-item>
+    <ion-item>Item 3</ion-item>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item>Item 1</button>
+    <button ion-item>Item 2</button>
+    <button ion-item>Item 3</button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item *ngFor="let item of items">{{item}}</button>
+  </ion-list>
 </ion-content>

@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePageComponent {
+  items: Array<string> = ['Item 1', 'Item 2', 'Item 3'];
 
   constructor(public navCtrl: NavController) {
 
