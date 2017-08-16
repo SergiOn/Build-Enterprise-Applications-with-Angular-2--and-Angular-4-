@@ -88,4 +88,8 @@
     <plugin name="cordova-plugin-contacts" spec="^2.3.1">
         <variable name="CONTACTS_USAGE_DESCRIPTION" value="Because we need contacts" />
     </plugin>
+    <plugin name="cordova-plugin-compat" spec="^1.1.0" />
+    <plugin name="cordova-plugin-camera" spec="^2.4.1">
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Because we need to access photos" />
+    </plugin>
 </widget>

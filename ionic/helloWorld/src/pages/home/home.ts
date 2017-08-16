@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, Platform } from 'ionic-angular';
 // import {AppVersion } from 'ionic-native';
 // import { Contacts} from 'ionic-native';
+import { Camera } from 'ionic-native';
 
 import { ItemDetailsComponent } from '../item-details/item-details';
 
@@ -23,6 +24,10 @@ export class HomePageComponent {
     platform.ready().then(() => {
       // AppVersion.getVersionNumber().then((v) => console.log('Version', v));
       // Contacts.find(['displayName']).then(c => console.log(c));
+      // Camera.getPicture({
+      //   sourceType: 0,
+      //   // destinationType:
+      // }).then(c => console.log('image', c));
     });
   }
 
