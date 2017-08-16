@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Platform } from 'ionic-angular';
-import { AppVersion } from 'ionic-native';
+// import {AppVersion } from 'ionic-native';
+// import { Contacts} from 'ionic-native';
 
 import { ItemDetailsComponent } from '../item-details/item-details';
 
@@ -19,8 +20,9 @@ export class HomePageComponent {
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
               public platform: Platform) {
-    this.platform.ready().then(() => {
+    platform.ready().then(() => {
       // AppVersion.getVersionNumber().then((v) => console.log('Version', v));
+      // Contacts.find(['displayName']).then(c => console.log(c));
     });
   }
 

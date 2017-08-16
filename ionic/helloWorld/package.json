@@ -29,7 +29,9 @@
         "@ionic/storage": "2.0.1",
         "cordova-android": "^6.2.3",
         "cordova-plugin-app-version": "^0.1.9",
+        "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-console": "1.0.5",
+        "cordova-plugin-contacts": "^2.3.1",
         "cordova-plugin-device": "1.1.4",
         "cordova-plugin-splashscreen": "~4.0.1",
         "cordova-plugin-statusbar": "2.2.2",
@@ -64,7 +66,10 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "cordova-plugin-app-version": {}
+            "cordova-plugin-app-version": {},
+            "cordova-plugin-contacts": {
+                "CONTACTS_USAGE_DESCRIPTION": "Because we need contacts"
+            }
         },
         "platforms": [
             "android"
