@@ -34,6 +34,7 @@
         "cordova-plugin-console": "1.0.5",
         "cordova-plugin-contacts": "^2.3.1",
         "cordova-plugin-device": "1.1.4",
+        "cordova-plugin-geolocation": "^2.4.3",
         "cordova-plugin-splashscreen": "~4.0.1",
         "cordova-plugin-statusbar": "2.2.2",
         "cordova-plugin-whitelist": "1.3.1",
@@ -74,7 +75,8 @@
             "cordova-plugin-compat": {},
             "cordova-plugin-camera": {
                 "PHOTOLIBRARY_USAGE_DESCRIPTION": "Because we need to access photos"
-            }
+            },
+            "cordova-plugin-geolocation": {}
         },
         "platforms": [
             "android"
