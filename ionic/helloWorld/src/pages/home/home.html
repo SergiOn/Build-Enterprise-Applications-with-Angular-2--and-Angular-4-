@@ -6,6 +6,7 @@
   </ion-navbar>
 </ion-header>
 
+<!--
 <ion-content padding>
 
 <!--
@@ -26,9 +27,14 @@
     <button ion-item>Item 2</button>
     <button ion-item>Item 3</button>
   </ion-list>
--->
+--
 
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="selectItem(item)">{{item.description}}</button>
   </ion-list>
+</ion-content>
+-->
+
+<ion-content>
+  <div id="map"></div>
 </ion-content>

@@ -3,7 +3,8 @@ import { NavController, ModalController, Platform } from 'ionic-angular';
 // import {AppVersion } from 'ionic-native';
 // import { Contacts} from 'ionic-native';
 // import { Camera } from 'ionic-native';
-import { Geolocation } from 'ionic-native';
+// import { Geolocation } from 'ionic-native';
+import { GoogleMap } from 'ionic-native';
 
 import { ItemDetailsComponent } from '../item-details/item-details';
 
@@ -29,7 +30,10 @@ export class HomePageComponent {
       //   sourceType: 0,
       //   // destinationType:
       // }).then(c => console.log('image', c));
-      Geolocation.getCurrentPosition().then(p => console.log('position', p));
+      // Geolocation.getCurrentPosition().then(p => console.log('position', p));
+
+      const map = new GoogleMap('map');
+      console.log(map);
     });
   }
 
