@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "start": "npm run run",
+    "set": "set ASPNETCORE_ENVIRONMENT=Development",
     "run": "dotnet run",
     "restore": "dotnet restore",
     "test": "karma start ClientApp/test/karma.conf.js"
