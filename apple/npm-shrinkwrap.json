@@ -93,6 +93,11 @@
       "resolved": "https://registry.npmjs.org/@types/jasmine/-/jasmine-2.5.53.tgz",
       "dev": true
     },
+    "@types/underscore": {
+      "version": "1.8.2",
+      "from": "@types/underscore@latest",
+      "resolved": "https://registry.npmjs.org/@types/underscore/-/underscore-1.8.2.tgz"
+    },
     "@types/webpack-env": {
       "version": "1.13.0",
       "from": "@types/webpack-env@1.13.0",
@@ -3377,6 +3382,11 @@
       "from": "ultron@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npmjs.org/ultron/-/ultron-1.0.2.tgz",
       "dev": true
+    },
+    "underscore": {
+      "version": "1.8.3",
+      "from": "underscore@latest",
+      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz"
     },
     "union-value": {
       "version": "0.2.4",

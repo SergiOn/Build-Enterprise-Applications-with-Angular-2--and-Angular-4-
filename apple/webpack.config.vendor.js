@@ -21,6 +21,7 @@ const nonTreeShakableModules = [
     'es6-shim',
     'event-source-polyfill',
     'jquery',
+    'underscore',
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
@@ -91,4 +92,4 @@ module.exports = (env) => {
     });
 
     return [clientBundleConfig, serverBundleConfig];
-}
+};
