@@ -1,0 +1,29 @@
+<h1>Patient</h1>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-group">
+        <label>Name</label>
+        <div *ngIf="!form.get('name').valid" class="alert alert-danger">
+            {{ form.get('name').getError('remote') }}
+        </div>
+    </div>
+    <!-- Address -->
+    <div formGroupName="address">
+        <h2>Address</h2>
+        <div class="form-group">
+            <label>Street</label>
+            <div *ngIf="!form.get('address.street').valid" class="alert alert-danger">
+                {{ form.get('address.street').getError('remote') }}
+            </div>
+            <input type="text" formGroupName="street" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <div *ngIf="!form.get('address.city').valid" class="alert alert-danger">
+                {{ form.get('address.city').getError('remote') }}
+            </div>
+            <input type="text" formGroupName="city" class="form-control">
+        </div>
+    </div>
+    <!-- Medications -->
+
+</form>
