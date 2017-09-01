@@ -1,4 +1,5 @@
 import { Component, DoCheck } from '@angular/core';
+import { Map } from 'immutable';
 
 let count = 0;
 
@@ -10,10 +11,16 @@ let count = 0;
 export class AppComponent implements DoCheck {
   title = 'app';
 
+  // movies = [
+  //   {title: 'm1'},
+  //   {title: 'm2'},
+  //   {title: 'm3'},
+  // ];
+
   movies = [
-    {title: 'm1'},
-    {title: 'm2'},
-    {title: 'm3'},
+    Map({title: 'm1'}),
+    Map({title: 'm2'}),
+    Map({title: 'm3'}),
   ];
 
   ngDoCheck(): void {
@@ -26,6 +33,7 @@ export class AppComponent implements DoCheck {
     //   {title: `Changed: ${count++}`},
     //   ...this.movies.slice(1),
     // ];
-    this.movies[0] = {title: `Changed: ${count++}`};
+    // this.movies[0] = {title: `Changed: ${count++}`};
+    this.movies[0] = this.movies[0].set('title', `${count++}`);
   }
 }
