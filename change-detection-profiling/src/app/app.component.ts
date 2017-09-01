@@ -1,20 +1,22 @@
 import { Component, DoCheck } from '@angular/core';
 import { Map, List } from 'immutable';
 
+let count = 0;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements DoCheck {
-  title = 'Hello World'; 
-  movies = [];
+  title = 'Hello World';
+  movies = List([]);
 
   constructor() {
-    let movies = [];
-    for (var i = 0; i < 10000; i++)
-      this.movies.push({ 
-        title: 'm ' + i, 
+    const movies = [];
+    for (let i = 0; i < 10000; i++) {
+      movies.push({
+        title: 'm ' + i,
         prop1: 1,
         prop2: 1,
         prop3: 1,
@@ -26,18 +28,20 @@ export class AppComponent implements DoCheck {
         prop9: 1,
         prop10: 1,
       });
+    }
+    this.movies = List(movies);
   }
 
-  changeTitle() { 
-    this.title = 'UPDATED TITLE' ;
+  changeTitle() {
+    this.title = `UPDATED TITLE: ${count++}`;
   }
 
-  ngDoCheck() { 
+  ngDoCheck() {
     // console.log("AppComponent-DoCheck");
   }
 
   onClick() {
-    var movie = this.movies[0];
+    const movie = this.movies[0];
     this.movies[0] = movie.set('title', 'UPDATED');
   }
 }

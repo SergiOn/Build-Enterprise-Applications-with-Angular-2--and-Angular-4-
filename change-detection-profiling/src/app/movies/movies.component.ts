@@ -4,13 +4,13 @@ import { Component, Input, DoCheck, ChangeDetectionStrategy } from '@angular/cor
   selector: 'movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesComponent implements DoCheck  {
-  @Input() movies; 
+  @Input() movies;
 
-  ngDoCheck() { 
+  ngDoCheck() {
     // console.log("MoviesComponent-DoCheck");
   }
-  
+
 }

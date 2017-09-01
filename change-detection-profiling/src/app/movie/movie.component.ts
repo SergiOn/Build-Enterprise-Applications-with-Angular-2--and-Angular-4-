@@ -6,9 +6,9 @@ import { Component, Input, DoCheck } from '@angular/core';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements DoCheck {
-  @Input() movie; 
+  @Input() movie;
 
-  ngDoCheck() { 
+  ngDoCheck() {
     console.log("MovieComponent-DoCheck");
   }
 }
