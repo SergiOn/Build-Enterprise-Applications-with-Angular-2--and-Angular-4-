@@ -13,6 +13,9 @@ export class AppComponent {
   counter = 0;
 
   constructor(private ngRedux: NgRedux<IAppState>) {
+    const subscription = this.ngRedux.subscribe(() => {
+      this.counter = ngRedux.getState().counter;
+    });
   }
 
   increment() {
