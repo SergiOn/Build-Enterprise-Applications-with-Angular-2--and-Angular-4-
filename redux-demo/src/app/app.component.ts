@@ -11,6 +11,9 @@ import { INCREMENT } from './actions';
 export class AppComponent {
   title = 'app';
   @select('counter') count;
+  @select(['messaging', 'newMessages']) newMessages;
+  @select((s: IAppState) => s.messaging.newMessages) newMessagesCount;
+  // messaging.newMessages
 
   constructor(private ngRedux: NgRedux<IAppState>) {
     // const subscription = this.ngRedux.subscribe(() => {
