@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux';
+import { Map } from 'immutable';
 import { IAppState } from './store';
 import { INCREMENT } from './actions';
 
@@ -10,12 +11,13 @@ import { INCREMENT } from './actions';
 })
 export class AppComponent {
   title = 'app';
-  @select('counter') count;
-  @select(['messaging', 'newMessages']) newMessages;
-  @select((s: IAppState) => s.messaging.newMessages) newMessagesCount;
+  @select((s) => s.get('counter')) count;
+  // @select('counter') count;
+  // @select(['messaging', 'newMessages']) newMessages;
+  // @select((s: IAppState) => s.messaging.newMessages) newMessagesCount;
   // messaging.newMessages
 
-  constructor(private ngRedux: NgRedux<IAppState>) {
+  constructor(private ngRedux: NgRedux<Map<string, any>>) {
     // const subscription = this.ngRedux.subscribe(() => {
     //   this.counter = ngRedux.getState().counter;
     // });
