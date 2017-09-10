@@ -13,7 +13,7 @@ import { TodoModule } from './todo';
   imports: [
     BrowserModule,
     TodoModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 2500 })
   ],
   providers: [],
   bootstrap: [AppComponent]
