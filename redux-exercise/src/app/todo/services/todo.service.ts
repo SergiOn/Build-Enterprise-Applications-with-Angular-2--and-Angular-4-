@@ -36,5 +36,13 @@ export class TodoService {
     });
   }
 
+  addTodo(todo: ITodo) {
+    const observable = this.http.post(this.url, todo);
+
+    this.ngRedux.dispatch({
+      type: ADD_TODO,
+      observable
+    });
+  }
 
 }

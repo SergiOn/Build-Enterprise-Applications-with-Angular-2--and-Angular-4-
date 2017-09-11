@@ -41,6 +41,15 @@ export const todoReducer: ITodoReducer<ITodoState> = (state = INITIAL_STATE_TODO
       return {...state, isFetching: false, todos};
     }
 
+    case ADD_TODO: {
+      return {...state, isFetching: true};
+    }
+
+    case ADD_TODO + _ON_NEXT: {
+      const todo = fromJS(action.data.data);
+      return {...state, isFetching: false, lastUpdate: new Date(), todos: state.todos.push(todo)};
+    }
+
     default: return state;
   }
 };
