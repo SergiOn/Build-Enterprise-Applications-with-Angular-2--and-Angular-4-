@@ -1,10 +1,37 @@
 .partition {
   float: left;
   padding: 20px;
-  width: 50%;
+  width: calc(50% - 50px);
   box-sizing: border-box;
 }
 
 .partition-filled {
   background: #eee;
+}
+
+.loader {
+  float: left;
+  width: 100px;
+  margin-top: 40px;
+  text-align: center;
+}
+.loading {
+  margin-bottom: 10px;
+  animation: color 5.6s linear infinite;
+}
+
+/*@keyframes color {*/
+  /*0% { color: #4285F4; }*/
+  /*25% { color: #DE3E35; }*/
+  /*50% { color: #F7C223; }*/
+  /*75% { color: #1B9A59; }*/
+  /*100% { color: #4285F4; }*/
+/*}*/
+
+@keyframes color {
+  100% { color: #4285F4; }
+  75% { color: #DE3E35; }
+  50% { color: #F7C223; }
+  25% { color: #1B9A59; }
+  0% { color: #4285F4; }
 }

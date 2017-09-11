@@ -1,6 +1,12 @@
 <div class="partition">
   <app-todo-list></app-todo-list>
 </div>
+
+<div class="loader">
+  <div class="loading" [hidden]="!(isFetching | async)">Loading...</div>
+  <app-loader [hidden]="!(isFetching | async)"></app-loader>
+</div>
+
 <div class="partition partition-filled">
   <app-todo-dashboard></app-todo-dashboard>
 </div>

@@ -7,6 +7,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoDashboardComponent } from './components/todo-dashboard/todo-dashboard.component';
 import { TodoComponent } from './todo.component';
 import { TodoService } from './services/todo.service';
+import { LoaderComponent } from '../components/loader/loader.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { TodoService } from './services/todo.service';
     ReactiveFormsModule,
   ],
   declarations: [
+    LoaderComponent,
     TodoListComponent,
     TodoItemComponent,
     TodoDashboardComponent,
@@ -24,7 +26,8 @@ import { TodoService } from './services/todo.service';
     TodoService
   ],
   exports: [
-    TodoComponent
+    TodoComponent,
+    LoaderComponent
   ]
 })
 export class TodoModule { }
