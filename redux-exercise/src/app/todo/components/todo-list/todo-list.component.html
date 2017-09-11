@@ -1,7 +1,7 @@
 <h2>Todo List</h2>
 
 <form [formGroup]="form" (ngSubmit)="addTodo()">
-  <input type="text" formControlName="name">
+  <input type="text" formControlName="title">
   <input type="submit" value="Add">
 </form>
 
@@ -10,3 +10,6 @@
                  *ngFor="let i of [0,1,2]">
   </app-todo-item>
 </ul>
+
+
+{{todo | async | json}}

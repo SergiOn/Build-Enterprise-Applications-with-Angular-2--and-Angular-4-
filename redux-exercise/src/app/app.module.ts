@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, isDevMode  } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgRedux, NgReduxModule, DevToolsExtension } from 'ng2-redux';
+import logger from 'redux-logger';
+import promiseMiddleware from 'redux-promise-middleware';
+import observableMiddleware from 'redux-observable-middleware';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
@@ -15,6 +19,7 @@ import { IAppState, rootReducer, INITIAL_STATE } from './root.reducer';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgReduxModule,
@@ -26,9 +31,13 @@ import { IAppState, rootReducer, INITIAL_STATE } from './root.reducer';
 })
 export class AppModule {
 
-  constructor(private ngRedux: NgRedux<IAppState>) {
-    console.log(isDevMode());
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private devTools: DevToolsExtension
+  ) {
+    const middleware = isDevMode ? [promiseMiddleware(), observableMiddleware, logger] : [];
+    const devToolEnhancer = isDevMode() ? this.devTools.enhancer() : undefined;
 
-    this.ngRedux.configureStore(rootReducer, INITIAL_STATE);
+    this.ngRedux.configureStore(rootReducer, INITIAL_STATE, middleware, devToolEnhancer);
   }
 }

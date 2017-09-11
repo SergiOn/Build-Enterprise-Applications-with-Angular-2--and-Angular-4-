@@ -1,6 +1,13 @@
 export interface ITodo {
-  id: number,
+  id?: number,
   title: string,
-  description: string,
   isComplete: boolean
+}
+
+export class Todo implements ITodo {
+
+  constructor(
+    public title: string,
+    public isComplete: boolean = false
+) { }
 }

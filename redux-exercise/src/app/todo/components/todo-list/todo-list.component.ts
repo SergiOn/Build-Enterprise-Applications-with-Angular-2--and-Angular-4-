@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgRedux } from 'ng2-redux';
-import { IAppState } from '../../../root.reducer';
+import { select } from 'ng2-redux';
+
+import { TodoService } from '../../services/todo.service';
+import { Todo } from '../../../models/todo';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,17 +12,19 @@ import { IAppState } from '../../../root.reducer';
 })
 export class TodoListComponent implements OnInit {
   form: FormGroup;
+  @select() todo;
 
   constructor(
     private fb: FormBuilder,
-    private ngRedux: NgRedux<IAppState>
+    private todoService: TodoService
   ) {
     this.form = fb.group({
-      name: ['', Validators.required]
+      title: ['', Validators.required]
     });
   }
 
   ngOnInit() {
+    this.todoService.loadTodos();
   }
 
   addTodo() {
@@ -28,9 +32,8 @@ export class TodoListComponent implements OnInit {
       return;
     }
 
-    this.ngRedux.dispatch({type: 'ADD_TODO'});
-
-    console.log(this.form.get('name').value);
+    const todo = new Todo(this.form.get('title').value);
+    this.todoService.addTodo(todo);
 
     this.form.reset();
   }
