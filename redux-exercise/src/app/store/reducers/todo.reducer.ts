@@ -50,6 +50,15 @@ export const todoReducer: ITodoReducer<ITodoState> = (state = INITIAL_STATE_TODO
       return {...state, isFetching: false, lastUpdate: new Date(), todos: state.todos.push(todo)};
     }
 
+    case REMOVE_TODO: {
+      return {...state, isFetching: true};
+    }
+
+    case REMOVE_TODO + _ON_NEXT: {
+      const todos = state.todos.delete(state.todos.findIndex(i => i.get('id') === action.payload.id));
+      return {...state, isFetching: false, lastUpdate: new Date(), todos};
+    }
+
     default: return state;
   }
 };

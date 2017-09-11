@@ -45,4 +45,19 @@ export class TodoService {
     });
   }
 
+  removeTodo(todo) {
+    const url = `${this.url}/${todo.id}`;
+
+    this.ngRedux.dispatch({
+      type: REMOVE_TODO
+    });
+
+    this.http.delete(url).subscribe((r) => {
+      this.ngRedux.dispatch({
+        type: REMOVE_TODO + _ON_NEXT,
+        payload: todo
+      });
+    });
+  }
+
 }
