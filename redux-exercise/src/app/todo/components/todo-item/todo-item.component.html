@@ -1,4 +1,4 @@
 <li>
-  <span>Item 1</span>
-  <button>Remove</button>
+  <span [ngClass]="{'completed': todo.isComplete}" (click)="onComplete()">{{ todo.title }}</span>
+  <button (click)="onDelete()">Remove</button>
 </li>
