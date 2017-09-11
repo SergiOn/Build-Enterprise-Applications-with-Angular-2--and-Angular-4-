@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgRedux } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/toPromise';
 
 import { ITodo } from '../../models/todo';
 import { IAppState } from '../../root.reducer';
-import { FETCH_TODOS, ADD_TODO } from '../../store/actions/todo.actions';
+import { FETCH_TODOS, ADD_TODO, REMOVE_TODO, COMPLETE_TODO, DELETE_TODOS } from '../../store/actions/todo.actions';
+import { _ON_NEXT } from '../../store/actions/constants';
 
 @Injectable()
 export class TodoService {
@@ -37,13 +36,5 @@ export class TodoService {
     });
   }
 
-  addTodo(todo: ITodo) {
-    const observable = this.http.post(this.url, {...todo});
-
-    this.ngRedux.dispatch({
-      type: ADD_TODO,
-      observable
-    });
-  }
 
 }
