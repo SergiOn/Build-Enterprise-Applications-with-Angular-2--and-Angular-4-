@@ -12,7 +12,7 @@ import { Todo } from '../../../models/todo';
 })
 export class TodoListComponent implements OnInit {
   form: FormGroup;
-  @select() todo;
+  @select(t => t.todo.todos.toJS()) todos;
 
   constructor(
     private fb: FormBuilder,
@@ -36,5 +36,13 @@ export class TodoListComponent implements OnInit {
     this.todoService.addTodo(todo);
 
     this.form.reset();
+  }
+
+  completeTodo(todo: Todo) {
+    this.todoService.completeTodo(todo);
+  }
+
+  removeTodo(todo: Todo) {
+    this.todoService.removeTodo(todo);
   }
 }

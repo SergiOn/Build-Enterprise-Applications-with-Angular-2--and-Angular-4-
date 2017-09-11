@@ -7,9 +7,12 @@
 
 <ul>
   <app-todo-item class="item"
-                 *ngFor="let i of [0,1,2]">
+                 *ngFor="let todo of todos | async"
+                 [todo]="todo"
+                 (completeTodo)="completeTodo($event)"
+                 (removeTodo)="removeTodo($event)">
   </app-todo-item>
 </ul>
 
 
-{{todo | async | json}}
+{{todos | async | json}}
