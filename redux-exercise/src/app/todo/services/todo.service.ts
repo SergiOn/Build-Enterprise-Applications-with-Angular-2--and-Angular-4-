@@ -60,4 +60,20 @@ export class TodoService {
     });
   }
 
+  completeTodo(todo) {
+    todo = {...todo, isComplete: !todo.isComplete};
+    const url = `${this.url}/${todo.id}`;
+
+    this.ngRedux.dispatch({
+      type: COMPLETE_TODO
+    });
+
+    this.http.put(this.url, todo).subscribe((r) => {
+      this.ngRedux.dispatch({
+        type: COMPLETE_TODO + _ON_NEXT,
+        payload: todo
+      });
+    });
+  }
+
 }
