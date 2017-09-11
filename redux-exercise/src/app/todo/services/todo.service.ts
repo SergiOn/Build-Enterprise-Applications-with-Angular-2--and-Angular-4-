@@ -76,4 +76,18 @@ export class TodoService {
     });
   }
 
+  deleteTodos(todos) {
+    this.ngRedux.dispatch({
+      type: DELETE_TODOS
+    });
+
+    const promise = todos.map(t => this.http.delete(`${this.url}/${t.id}`).toPromise());
+    Promise.all(promise)
+      .then((r) => {
+        this.ngRedux.dispatch({
+          type: DELETE_TODOS + _ON_NEXT
+        });
+      });
+  }
+
 }
