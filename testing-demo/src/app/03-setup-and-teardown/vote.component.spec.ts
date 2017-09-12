@@ -1,10 +1,14 @@
 import { VoteComponent } from './vote.component';
 
 describe('VoteComponent', () => {
-  it('should increment totalVotes when upvoted', () => {
-    // Arrange
-    const component = new VoteComponent();
+// Arrange
+  let component: VoteComponent;
 
+  beforeEach(() => {
+    component = new VoteComponent();
+  });
+
+  it('should increment totalVotes when upvoted', () => {
     // Act
     component.upVote();
 
@@ -13,9 +17,7 @@ describe('VoteComponent', () => {
   });
 
   it('should decrement totalVotes when downvoted', () => {
-    const component = new VoteComponent();
     component.downVote();
-
     expect(component.totalVotes).toBe(-1);
   });
 
