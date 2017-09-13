@@ -1,15 +1,25 @@
 import { VoterComponent } from './voter.component';
 
 describe('VoterComponent', () => {
+    let sut: VoterComponent;
 
-    beforeEach(() => {});
+    beforeEach(() => {
+      sut = new VoterComponent();
+    });
 
-    it('should calculate total votes properly', () => {});
+    it('should calculate total votes properly', () => {
+      sut.othersVote = 7;
+      sut.myVote = 8;
+
+      expect(sut.totalVotes).toBe(15);
+    });
 
     // Note that I've grouped the 4 tests for upvotting under a separate suite.
     // This makes it easier to see the report of our tests: "When I upvote, it should ..."
     describe('When I upvote,', () => {
       it('should increment total votes', () => {
+        sut.upVote();
+        expect(sut.myVote).toBe(1);
 
         // Note that I've made assertion against "totalVotes", not "myVote", because eventually
         // it's the value of "totalVotes" that we render on the view. So, that's what matters.
@@ -25,20 +35,64 @@ describe('VoterComponent', () => {
         // should be shown to the user.
       });
 
-      it('should NOT increment total votes if I have already submitted a positive vote', () => {});
+      it('should NOT increment total votes if I have already submitted a positive vote', () => {
+        sut.myVote = 1;
+        sut.upVote();
 
-      it('should raise an event', () => {})
+        expect(sut.myVote).toBe(1);
+      });
 
-      it('should NOT raise an event if I have already submitted a positive vote', () => {});
+      it('should raise an event', () => {
+        let eventData = null;
+        sut.myVoteChanged.subscribe(v => eventData = v);
+        sut.upVote();
+
+        expect(eventData).not.toBeNull();
+
+        // I'm using toEqual() instead of toBe() here. The former performs a deep equality check
+        // where as the latter (toBe) does a reference check.
+        expect(eventData).toEqual({myVote: 1});
+      });
+
+      it('should NOT raise an event if I have already submitted a positive vote', () => {
+        let eventData = null;
+        sut.myVote = 1;
+        sut.myVoteChanged.subscribe(v => eventData = v);
+        sut.upVote();
+
+        expect(eventData).toBeNull();
+      });
     });
 
     describe('When I downvote,', () => {
-      it('should decrement total votes', () => {});
+      it('should decrement total votes', () => {
+        sut.downVote();
+        expect(sut.myVote).toBe(-1);
+      });
 
-      it('should NOT decrement total votes if I have already submitted a negative vote', () => {});
+      it('should NOT decrement total votes if I have already submitted a negative vote', () => {
+        sut.myVote = -1;
+        sut.downVote();
 
-      it('should raise an event', () => {})
+        expect(sut.myVote).toBe(-1);
+      });
 
-      it('should NOT raise an event if I have already submitted a negative vote', () => {});
+      it('should raise an event', () => {
+        let eventData = null;
+        sut.myVoteChanged.subscribe(v => eventData = v);
+        sut.downVote();
+
+        expect(eventData).not.toBeNull();
+        expect(eventData).toEqual({myVote: -1});
+      });
+
+      it('should NOT raise an event if I have already submitted a negative vote', () => {
+        let eventData = null;
+        sut.myVote = -1;
+        sut.myVoteChanged.subscribe(v => eventData = v);
+        sut.downVote();
+
+        expect(eventData).toBeNull();
+      });
     });
 });
