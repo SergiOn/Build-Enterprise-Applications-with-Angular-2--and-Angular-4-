@@ -8,23 +8,24 @@ import { TodoService } from './todo.service'
 })
 export class TodosComponent implements OnInit {
   todos: any[] = [];
-  message; 
+  message;
 
   constructor(private service: TodoService) {}
 
-  ngOnInit() { 
+  ngOnInit() {
     this.service.getTodos().subscribe(t => this.todos = t);
   }
 
-  add() { 
-    var newTodo = { title: '... ' };
-    this.service.add(newTodo).subscribe(
+  addTodo() {
+    const newTodo = { title: '... ' };
+    this.service.addTodo(newTodo).subscribe(
       t => this.todos.push(t),
       err => this.message = err);
   }
 
-  delete(id) {
-    if (confirm('Are you sure?'))
-      this.service.delete(id).subscribe();
-  } 
+  deleteTodo(id) {
+    if (confirm('Are you sure?')) {
+      this.service.deleteTodo(id).subscribe();
+    }
+  }
 }
